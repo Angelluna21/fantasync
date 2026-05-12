@@ -42,5 +42,38 @@ Para ejecutar este proyecto localmente (por ejemplo, con XAMPP), sigue estos pas
 3.  Agrega los platillos requeridos y el número de porciones para cada salón.
 4.  Accede a la sección de **Reporte** para visualizar e imprimir los totales de compra calculados automáticamente según las recetas de los platillos.
 
+## 🧠 Estructura del Código y Base de Datos
+
+### 🔌 Conexión a la Base de Datos
+El proyecto utiliza principalmente el archivo `db.php` para gestionar la conexión a la base de datos MySQL. 
+*   Se utiliza la extensión **PDO (PHP Data Objects)** para una conexión más segura y flexible.
+*   En algunos scripts específicos (como `calcular.php`), se utiliza la extensión `mysqli` de forma directa.
+
+### 📁 Archivos PHP Utilizados
+A continuación se describen los archivos PHP que componen el sistema y su función:
+
+*   **`index.php`**: El panel de control (Dashboard) principal del sistema. Muestra accesos directos a todas las secciones con un diseño moderno.
+*   **`db.php`**: Archivo de configuración que establece la conexión PDO con la base de datos.
+*   **`header.php` / `footer.php`**: Componentes reutilizables que contienen la estructura HTML común de la cabecera y el pie de página.
+*   **`salon_list.php`**: Permite listar y gestionar los salones disponibles.
+*   **`evento_list.php`**: Muestra la lista de eventos planificados.
+*   **`evento_edit.php`**: Formulario para crear o editar los detalles de un evento.
+*   **`evento_menu.php`**: Permite asignar el menú (platillos y porciones) a los salones de un evento.
+*   **`evento_salones.php`**: Gestiona los salones asignados a un evento específico.
+*   **`platillos.php`**: Módulo para la gestión del catálogo de platillos.
+*   **`categoria_list.php`**: Gestión de las categorías para clasificar los platillos.
+*   **`ingredientes.php`**: Módulo para administrar el catálogo de ingredientes.
+*   **`recetas.php`**: Permite definir las recetas, asociando ingredientes y cantidades a cada platillo.
+*   **`receta_api.php`**: Endpoint que devuelve en formato JSON los ingredientes de un platillo específico.
+*   **`calcular.php`**: Herramienta interactiva para calcular las cantidades de ingredientes necesarias para un número determinado de porciones de un platillo.
+*   **`reporte_evento.php`**: Genera el reporte final del evento con los totales de compra necesarios.
+*   **`pedido_cliente.php`**: Gestión o visualización de pedidos de clientes.
+*   **`pedido_compra.php` / `pedido_compras.php`**: Gestión de órdenes y pedidos de compra de insumos.
+
+### ⚙️ ¿Cómo funciona el código?
+El sistema opera bajo un esquema de PHP tradicional (Server-Side Rendering) donde cada página procesa las peticiones del usuario, consulta la base de datos y renderiza el HTML correspondiente.
+1.  **Inclusión de componentes:** La mayoría de los archivos incluyen `db.php` para la conexión y `header.php`/`footer.php` para mantener un diseño consistente.
+2.  **Cálculos automatizados:** Mediante consultas SQL avanzadas y vistas (`vw_...`), el sistema multiplica las porciones requeridas en los eventos por las cantidades base definidas en las recetas, generando listas de compras exactas.
+
 ---
 Desarrollado para el proyecto de estadía por **Angel Luna**.
