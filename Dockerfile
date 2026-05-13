@@ -1,10 +1,6 @@
 FROM php:8.2-apache
 
-# SQLite ya viene incluido en PHP, solo necesitamos habilitar la extensión
-# En lugar de instalar, usamos docker-php-ext-enable
-RUN docker-php-ext-enable pdo_sqlite
-
-# Habilitar mod_rewrite para URLs amigables
+# Habilitar mod_rewrite (esto sí es necesario)
 RUN a2enmod rewrite
 
 # Copiar todo el proyecto
@@ -18,4 +14,5 @@ RUN mkdir -p /var/www/html/database && \
 # Exponer puerto
 EXPOSE 80
 
+# Iniciar Apache
 CMD ["apache2-foreground"]
