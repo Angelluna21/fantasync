@@ -1,0 +1,12 @@
+# Base de datos SQLite local
+database/*.sqlite
+database/*.sqlite-journal
+
+# Archivos temporales
+*.log
+*.tmp
+.DS_Store
+
+# Configuraciones locales
+.env
+.idea/
