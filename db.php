@@ -1,5 +1,4 @@
-cat > db.php << 'EOF'
-  <?php
+<?php
   // db.php - Con creación automática de tablas
   $dbPath = __DIR__ . '/database/cocina_fantasy.sqlite';
 
